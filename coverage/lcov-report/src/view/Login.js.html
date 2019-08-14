@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/view/Login.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/view</a> Login.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">55.17% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>16/29</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.14% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>16/28</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { emailLogIn, authFacebook, authGmail } from '../controller/login.js';
+import changeHash from './utils.js';
+&nbsp;
+export const loginOnClick = (evt) =&gt; {
+  const formElem = evt.target.closest('form');
+  let email = formElem.querySelector('#email').value;
+  let password  = formElem.querySelector('#password').value;
+  emailLogIn(email, password)
+    .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >changeHash('#/home'))</span>
+    .catch(<span class="fstat-no" title="function not covered" >er</span>ror =&gt;  {
+        let errorCode = <span class="cstat-no" title="statement not covered" >error.code;</span>
+        let errorMessage = <span class="cstat-no" title="statement not covered" >error.message;</span>
+<span class="cstat-no" title="statement not covered" >        if (errorCode === 'auth/invalid-email') {</span>
+<span class="cstat-no" title="statement not covered" >          document.getElementById('error-message').innerHTML = '¡Hey! Ingresa un correo electronico válido';</span>
+        
+        } else <span class="cstat-no" title="statement not covered" >if (errorCode === 'auth/wrong-password') {</span>
+<span class="cstat-no" title="statement not covered" >          document.getElementById('error-message').innerHTML = 'Tu contraseña es incorrecta';</span>
+      
+        } else <span class="cstat-no" title="statement not covered" >if (errorCode === 'auth/user-not-found') { </span>
+<span class="cstat-no" title="statement not covered" >          document.getElementById('error-message').innerHTML = '¡Ups! Este correo no esta registrado';</span>
+        }
+      });
+}
+&nbsp;
+export const logIn = () =&gt; {
+  const form = `&lt;div class="flex-container"&gt;
+    &lt;div id="logo" class="border-box logo text-center"&gt;
+      &lt;img class="img-logo" src="../assets/laptop-logo1.png"&gt;
+&nbsp;
+    &lt;/div&gt;
+    &lt;div id="login" class="border-box login-form-container"&gt;
+      &lt;h1 class="title text-center"&gt;Mano Amiga&lt;/h1&gt;
+      &lt;p class="text-center content"&gt;¡Bienvenida amiga!&lt;/p&gt;
+      &lt;form&gt;
+        &lt;input id="email" class="login login-input border" type="email" name="email" placeholder="Email"&gt;
+        &lt;input id="password" class="login login-input border" type="password" name="password" placeholder="Password"&gt;
+        &lt;button id="log-in-btn" type="button" class="login btn-login bg-green color-white"&gt;Log in&lt;/button&gt;
+        &lt;p id="error-message" class="text-center error-message"&gt;&lt;/p&gt;
+        &lt;p class="text-center"&gt;O bien ingresa con...&lt;/p&gt;
+        &lt;div class="text-center"&gt;
+          &lt;img id="log-in-fb" class="btn-icon" src="../assets/btn-login-facebook.png" alt="facebook-login-button"id="log-in-fb"  /&gt;
+          &lt;img id="log-in-gmail" class="btn-icon" src="../assets/btn-login-google.png" alt="google-login-button" /&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+      &lt;p class="text-center"&gt;¿No tienes una cuenta? &lt;a class="links" href="#/signUp" title="link de registro"&gt;Regístrate&lt;/a&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;`;
+  let div = document.createElement('div');
+  div.innerHTML = form;
+  
+  const logInBtn = div.querySelector('#log-in-btn');
+  logInBtn.addEventListener('click', loginOnClick);
+&nbsp;
+  const facebookLogInBtn = div.querySelector('#log-in-fb');
+  facebookLogInBtn.addEventListener('click', <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >    authFacebook() </span>
+    .then(<span class="fstat-no" title="function not covered" >(r</span>esult) =&gt;{
+<span class="cstat-no" title="statement not covered" >     changeHash('#/home')</span>
+    })
+    .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {})
+  });
+  
+  const googleLogInBtn = div.querySelector('#log-in-gmail');
+  googleLogInBtn.addEventListener('click', <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >authGmail()</span>
+    .then(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >changeHash('#/home'))</span>
+    .catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; {})
+    );
+ 
+  return div;
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu May 30 2019 15:57:38 GMT-0500 (-05)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
