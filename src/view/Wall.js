@@ -257,6 +257,7 @@ const commentListTemplate = (commentsObject) => {
 
 export const toggleDisableTextarea = (textArea, select, postObject, btn) => {
 	if (textArea.readOnly && select.disabled) {
+		btn.src = "../assets/save.png";
 		textArea.readOnly = false;
 		select.disabled = false;
 		document.getElementById(`edit-privacy-${postObject.id}`).classList.add("show");
