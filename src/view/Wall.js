@@ -55,17 +55,19 @@ export const home = (posts) => {
 // creando funcion que crea el template de los post
 export const createPostTemplate = () => {
 	const createPostContainer = document.createElement('div');
-	createPostContainer.classList.add('post-article', 'post-box', 'border');
+	createPostContainer.classList.add('post-article', 'post-box', 'border-post');
 	createPostContainer.setAttribute('id', 'create-post-container');
 	const createPostForm = `
 	<form>
+	<div class="col-12">
+	  <select id="post-privacy-select" class="block select bg-green color-white border-none">
+	  <option value="public">Public</option>
+	  <option value="private">Private</option>
+	  </select>
+	  </div>
 	  <input id="post-content-input" class="block post-input border" type="text" name="post-content" placeholder="¿Qué quieres compartir?" />
 	  <div class="btn-post-input">
 	  <img id="btn-upload-image" class="block border-box btn-icon-post bg-green" src="../assets/image.png" alt="subir-imagen" title="subir imagen" />
-	  <select id="post-privacy-select" class="block select bg-green color-white border-none">
-  		<option value="public">Public</option>
-  		<option value="private">Private</option>
-	  </select>
 	  <button id="create-post-btn" type="submit" class="block btn-share bg-green color-white">Compartir</button>
 	  </div>
 	  <input id="input-file" class="none" type="file" accept="image/*" />
@@ -107,6 +109,7 @@ export const createPostOnClick = (event) => {
 
 export const postListTemplate = (postObject) => {
 	const user = getCurrenUser();
+
 	const postsList = 
 				`<div class="post-article post-head border-box bg-green">
 					<div class="col-2">
@@ -125,7 +128,7 @@ export const postListTemplate = (postObject) => {
 				  <span id="likes-count-${postObject.id}" class="color-black registry">${postObject.likes}</span>
 				  <img id="btnLike-${postObject.id}" class="border-box btn-icon-post bg-green" src="../assets/heart.png" alt="likes" title="likes" />
 				  ${(user && user.uid === postObject.userId) ? `<img id="btn-edit-${postObject.id}" class="border-box btn-icon btn-icon-post bg-green" src="../assets/paper-plane.png" alt="editar-post" />`: ''}
-				  ${(user && user.uid === postObject.userId) ? `<select id="edit-privacy-${postObject.id}" class="select-privacy select bg-green color-white border-none" disabled="true"> 
+				  ${(user && user.uid === postObject.userId) ? `<select id="edit-privacy-${postObject.id}" class="select bg-green color-white border-none hide" disabled="true">
 				  	${(postObject.state === 'public') ? `<option value="public">Public</option><option value="private">Private</option>` : `<option value="private">Private</option><option value="public">Public</option>`}
 						</select>` : ``}
 				</div>
@@ -254,13 +257,17 @@ const commentListTemplate = (commentsObject) => {
 
 export const toggleDisableTextarea = (textArea, select, postObject, btn) => {
 	if (textArea.readOnly && select.disabled) {
-		btn.src = "../assets/save.png";
 		textArea.readOnly = false;
 		select.disabled = false;
+		document.getElementById(`edit-privacy-${postObject.id}`).classList.add("show");
+		document.getElementById(`edit-privacy-${postObject.id}`).classList.remove("hide");
 	} else {
 		btn.src = "../assets/paper-plane.png";
 		textArea.readOnly = true;
 		select.disabled = true;
+		document.getElementById(`edit-privacy-${postObject.id}`).classList.add("hide");
+		document.getElementById(`edit-privacy-${postObject.id}`).classList.remove("show");
+
 		return updatePost(postObject.id, textArea.value, select.value)
 	}
 }

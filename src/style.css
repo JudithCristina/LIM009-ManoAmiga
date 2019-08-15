@@ -73,6 +73,10 @@ body {
 	width: 91,6667%;
 	float: left;
 }
+.col-12 {
+	width: 100%;
+	float: left;
+}
 
 .float-left {
 	float: left;
@@ -153,17 +157,18 @@ body {
 	border-radius: 15px;
 	border: none;
 }
-
+.hide{
+    display: none;
+}
 .select {
 	padding: 2px;
-}
-
-.select-privacy {
+	margin:  4px;
+	float: right;
 	margin-bottom: 7px;
 	margin-left: 10px;
-    display: inline-block;
-    vertical-align: bottom;
+	vertical-align: bottom;
 }
+	
 
 .login-form-container {
 	height: 75vh;
@@ -182,6 +187,7 @@ body {
 
 .border-box {
 	box-sizing: border-box;
+	
 }
 
 .links {
@@ -234,7 +240,8 @@ body {
 }
 
 .post-comment {
-	padding: 10px 5%;
+	padding: 10px 2%;
+	padding-bottom: 40px;
 	border-top: 1px solid #00c89b;
 }
 
@@ -261,6 +268,12 @@ body {
 
 .border {
 	border: 1px solid #00c89b;
+	
+}
+.border-post {
+	border: 1px solid #00c89b;
+	margin-top: 2px
+	
 }
 /*cabecera*/
 .container-head, .mobile-navbar{
@@ -370,6 +383,7 @@ header img {
 	width: 40vw;
 	height: 60vh;
 	border: 2px solid #00c89b;
+	margin: 2px
 }
 
 /** navbar **/
