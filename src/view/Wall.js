@@ -123,12 +123,13 @@ export const postListTemplate = (postObject) => {
 				<div class="post-content clear">
 				  <textarea id="post-edit-${postObject.id}" class="border-box post-article textarea border-none" readOnly=true>${postObject.content}</textarea>
 				  ${(postObject.image !== undefined && postObject.image !== null) ? `<img class="image-post" src="${postObject.image}" alt="post-image" title="post image" />` : ``}
-				  <span id="likes-count-${postObject.id}" class="color-black registry">${postObject.likes}</span>
+				  <span id="likes-count-${postObject.id}" class="like-1 registry">${postObject.likes}</span>
 				  </div>
         		<div class="post-article bg-light-green post-footer border-box">
-				  <img id="btnLike-${postObject.id}" class="border-box btn-icon-post bg-green" src="../assets/heart.png" alt="likes" title="likes" />
-				  ${(user && user.uid === postObject.userId) ? `<img id="btn-edit-${postObject.id}" class="border-box btn-icon btn-icon-post bg-green" src="../assets/paper-plane.png" alt="editar-post" />`: ''}
-				  ${(user && user.uid === postObject.userId) ? `<select id="edit-privacy-${postObject.id}" class="select bg-green color-white border-none hide" disabled="true">
+				  <img id="btnLike-${postObject.id}" class="border-box btn-icon-post bg-green class col-2" src="../assets/heart.png" alt="likes" title="likes" />
+				  <p class="like-2 col-3" id="me-encanta-${postObject.id}">Me encanta</p>
+				  ${(user && user.uid === postObject.userId) ? `<img id="btn-edit-${postObject.id}" class="border-box btn-icon btn-icon-post bg-green col-2" src="../assets/paper-plane.png" alt="editar-post" />`: ''}
+				  ${(user && user.uid === postObject.userId) ? `<select id="edit-privacy-${postObject.id}" class="select bg-green color-white border-none hide col-5" disabled="true">
 				  	${(postObject.state === 'public') ? `<option value="public">Public</option><option value="private">Private</option>` : `<option value="private">Private</option><option value="public">Public</option>`}
 						</select>` : ``}
 				</div>
@@ -162,31 +163,40 @@ export const postListTemplate = (postObject) => {
 	const btnLike = article.querySelector(`#btnLike-${postObject.id}`);
 	let userLikes;
 	getAllLikesPost(postObject.id, (likes) => {
-    	const likesCounter = likes.length;
+		const likesCounter = likes.length;
+		const likesSpanEncanta = article.querySelector(`#me-encanta-${postObject.id}`);
     	const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
     	userLikes = likes.find((comment) => comment.userName === user.email);
 		(userLikes !== undefined) ? btnLike.src = '../assets/heart.png' : btnLike.src = '../assets/heart-empty.png';
 			likesSpan.innerHTML = (userLikes !== undefined) ?  (likesCounter===1) ?  `a ti te encanta` :  `a ti y a ${likesCounter -1} personas le encanta` : (likesCounter===0)? "":`a ${likesCounter} personas le encanta`;
+		(userLikes !== undefined) ? likesSpanEncanta.classList.add("letter-like-red") : likesSpanEncanta.classList.add("like-2") && likesSpanEncanta.classList.remove("letter-like-red");
+			
     });
 
     btnLike.addEventListener('click', () => {
     	if (userLikes === undefined) {
     	  addLikeToPost(postObject.id, user.email)
     	  .then((response) => getAllLikesPost(postObject.id, (likes) => {
-    	  	btnLike.src = '../assets/heart.png';
+			  btnLike.src = '../assets/heart.png';
+			  const likesSpanEncanta = article.querySelector(`#me-encanta-${postObject.id}`);
+			  likesSpanEncanta.classList.remove("like-2");
+			  likesSpanEncanta.classList.add("letter-like-red");
     	    const likesCounter = likes.length;
-    	    const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
+			const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
 			userLikes = likes.find((comment) => comment.userName === user.email);
 			likesSpan.innerHTML = likesCounter===1 ?  `a ti te encanta` :  `a ti y a ${likesCounter -1} personas le encanta`;
-            })
+		})
     	  );	
     	}  else {
     	  removeLikeToPost(postObject.id, userLikes.id)
     	  .then((response) => getAllLikesPost(postObject.id, (likes) => {
-    	  	btnLike.src = '../assets/heart-empty.png';
+			  btnLike.src = '../assets/heart-empty.png';
+			  const likesSpanEncanta = article.querySelector(`#me-encanta-${postObject.id}`);
+			  likesSpanEncanta.classList.add("like-2");
+			  likesSpanEncanta.classList.remove("letter-like-red");
     	    const likesCounter = likes.length;
-    	    const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
-    	    likesSpan.innerHTML =likesCounter===0 ? "":`a ${likesCounter} personas le encanta`;
+			const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
+			likesSpan.innerHTML =likesCounter===0 ? "":`a ${likesCounter} personas le encanta`;
     	    userLikes = undefined;
             })
     	  );
