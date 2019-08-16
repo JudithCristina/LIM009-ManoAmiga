@@ -187,6 +187,7 @@ body {
 
 .border-box {
 	box-sizing: border-box;
+	margin-top: 4px
 	
 }
 
@@ -336,7 +337,7 @@ header img {
 
 .background-profile{
 	width: 100%;
-	height: 80px;	
+	height: 100px;	
 }
 .container-user{
 	width: 100%;
@@ -347,10 +348,14 @@ header img {
 	align-items: center;
 }
 
+.margin-name{
+	margin-top: 80px
+}
 .img-user{
 	width: 80px;
 	height: 80px;
 	border-radius: 5rem;
+	margin-top: 30px
 }
 
 .round-image {
@@ -443,7 +448,7 @@ nav li ul{
   }
 
   .profile {
-	  height: 18vh;
+	  height: 22vh;
 	  margin: 0 1rem;
     border: 1px solid #00c89b
   }
