@@ -127,8 +127,15 @@ body {
 .btn-icon-post {
 	width: 30px;
 	color: #fff;
-	padding: 6px;
+	padding: 7px;
 	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+.me-encanta{
+	width: 15px;
+	padding: 2px;
+	box-sizing: border-box;
 }
 
 .btn-delete {
@@ -187,8 +194,12 @@ body {
 
 .border-box {
 	box-sizing: border-box;
-	margin-top: 4px
+	margin-top: 1px
 	
+}
+.margin-delete{
+	box-sizing: border-box;
+	margin-top: 1px
 }
 
 .links {
@@ -203,13 +214,15 @@ body {
 .like-2 {
 	color: rgb(104, 101, 101);
 	font-weight: bold;
-	margin-left: 8px
+	margin-left: 8px;
+	margin-top:8px
 	
 }
 .letter-like-red{
 	color: red;
 	font-weight: bold;
-	margin-left: 8px
+	margin-left: 8px;
+	margin-top:8px
 }
 
 .post-list {

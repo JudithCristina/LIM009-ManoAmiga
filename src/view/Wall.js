@@ -68,7 +68,7 @@ export const createPostTemplate = () => {
 	  <input id="post-content-input" class="block post-input border" type="text" name="post-content" placeholder="¿Qué quieres compartir?" />
 	  <div class="btn-post-input">
 	  <img id="btn-upload-image" class="block border-box btn-icon-post bg-green" src="../assets/image.png" alt="subir-imagen" title="subir imagen" />
-	  <button id="create-post-btn" type="submit" class="block btn-share bg-green color-white">Compartir</button>
+	  <button id="create-post-btn" type="submit" class="block btn-share bg-green color-white">Publicar</button>
 	  </div>
 	  <input id="input-file" class="none" type="file" accept="image/*" />
 	</form>`;
@@ -117,13 +117,16 @@ export const postListTemplate = (postObject) => {
 					</div> 
 					${postObject.user === null ? `<p class="col-9">Publicado por <strong>${user.email}</strong></p>`:`<p class="col-9">Publicado por  <strong>${postObject.user} </strong></p>` } 
 					<div class="col-1">
-					${(user && user.uid === postObject.userId) ? `<img id="btn-delete-${postObject.id}" class="block border-box auto btn-delete bg-green" src="../assets/close.png" alt="eliminar-post" />`: ''}
+					${(user && user.uid === postObject.userId) ? `<img id="btn-delete-${postObject.id}" class="block margin-delete auto btn-delete bg-green" src="../assets/close.png" alt="eliminar-post" />`: ''}
 					</div>
 				</div>
 				<div class="post-content clear">
 				  <textarea id="post-edit-${postObject.id}" class="border-box post-article textarea border-none" readOnly=true>${postObject.content}</textarea>
 				  ${(postObject.image !== undefined && postObject.image !== null) ? `<img class="image-post" src="${postObject.image}" alt="post-image" title="post image" />` : ``}
-				  <span id="likes-count-${postObject.id}" class="like-1 registry">${postObject.likes}</span>
+				  <div>
+				  <img  id="mini-encanta-${postObject.id}" class="me-encanta" src="../assets/heart-empty.png" alt="likes" title="likes" />
+				  <span id="likes-count-${postObject.id}" class="like-1">${postObject.likes}</span>
+				  </div>
 				  </div>
         		<div class="post-article bg-light-green post-footer border-box">
 				  <img id="btnLike-${postObject.id}" class="border-box btn-icon-post bg-green class col-2" src="../assets/heart.png" alt="likes" title="likes" />
@@ -161,13 +164,15 @@ export const postListTemplate = (postObject) => {
 	}
 	// show likes total in span
 	const btnLike = article.querySelector(`#btnLike-${postObject.id}`);
+	const miniEncanta =article.querySelector(`#mini-encanta-${postObject.id}`);
 	let userLikes;
 	getAllLikesPost(postObject.id, (likes) => {
 		const likesCounter = likes.length;
 		const likesSpanEncanta = article.querySelector(`#me-encanta-${postObject.id}`);
     	const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
     	userLikes = likes.find((comment) => comment.userName === user.email);
-		(userLikes !== undefined) ? btnLike.src = '../assets/heart.png' : btnLike.src = '../assets/heart-empty.png';
+		(userLikes !== undefined) ? btnLike.src = '../assets/heart.png'  : btnLike.src = '../assets/heart-empty.png';
+		(userLikes !== undefined) ? miniEncanta.src = '../assets/heart.png'  : miniEncanta.src = '../assets/heart-empty.png';
 			likesSpan.innerHTML = (userLikes !== undefined) ?  (likesCounter===1) ?  `a ti te encanta` :  `a ti y a ${likesCounter -1} personas le encanta` : (likesCounter===0)? "":`a ${likesCounter} personas le encanta`;
 		(userLikes !== undefined) ? likesSpanEncanta.classList.add("letter-like-red") : likesSpanEncanta.classList.add("like-2") && likesSpanEncanta.classList.remove("letter-like-red");
 			
