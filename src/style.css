@@ -511,8 +511,7 @@ nav li ul{
   .navbar {
   	display: flex;
   }
-}
-								
+}								
 .textarea-comment {
 	width: 90%;
 	height: 25px;
