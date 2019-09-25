@@ -3,6 +3,10 @@ body {
 	font-family: Verdana;
 	min-height: 100vh;
 	font-size: 14px;
+	background: rgba(211, 211, 211, 0.082)
+}
+.myborder{
+border: #e23350
 }
 
 .title {
@@ -57,6 +61,11 @@ body {
 
 .col-3 {
 	width: 25%;
+	float: left;
+}
+
+.col-6 {
+	width: 50%;
 	float: left;
 }
 
@@ -194,12 +203,12 @@ body {
 
 .border-box {
 	box-sizing: border-box;
-	margin-top: 1px
+	margin-top: 1px;
 	
 }
 .margin-delete{
 	box-sizing: border-box;
-	margin-top: 1px
+	margin-top: 8px
 }
 
 .links {
@@ -296,6 +305,10 @@ body {
 	border: 1px solid #00c89b;
 	
 }
+.border1 {
+	border: 0.5px solid #a4f5e3;
+	
+}
 .border-post {
 	border: 1px solid #00c89b;
 	margin-top: 2px
@@ -359,6 +372,11 @@ header img {
 	width: 100%;
 	height: 50px;
 }
+.container-background1{
+	width: 100%;
+	height: 200px;
+}
+
 
 .background-profile{
 	width: 100%;
@@ -392,6 +410,8 @@ header img {
 .container-profile{
 	width: 70vw;
 	height: 60vh;
+	display:inline-block;
+	text-align: center;
 }
 .container-profile h2{
 	width: 40vw;
@@ -408,6 +428,8 @@ header img {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
+	
 }
 .profile-border{
 	width: 40vw;
@@ -502,3 +524,15 @@ nav li ul{
 	display:block;
   margin:auto;
  }
+ .borderNotice{
+border: solid 1px #00c89b;
+padding: 2px;
+margin: 3px
+
+  }
+
+  .title{
+	  text-align: center;
+	  font-size: 20px;
+  }
+ 

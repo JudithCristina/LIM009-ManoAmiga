@@ -15,14 +15,50 @@ export const home = (posts) => {
 	// condicional si usuario esta logeado muestrame la parte del perfil del usuario
   if (user) {
 	content = `
-	<section id="profile-container" class="profile border-box">
+	<section id="profile-container" class="profile border-box col-12">
         <div class="container-background">
 			<img class="background-profile" src="../assets/coffe-code.jpg"/>
         </div>
         <div class="container-user">
             ${user.photoURL === null ? `<img class="img-user" src="../assets/perfil-email.jpg"/>` : `<img class="img-user" src="${user.photoURL}"/>`}
             ${user.displayName === null ? `<p id="inf-user" class="margin-name"><strong> ${user.email}</strong><p>`:`<p id="inf-user"  class="margin-name"><strong>${user.displayName}</strong><p>` }  
-        </div>
+		</div> <br/> <br/> <br/>
+		<div class="bloque col-12">
+		<p class="title"><strong>Mano Amiga</strong></p>
+		<p class="title">Infórmate</p>
+<div class="card-deck">
+  <div class="card borderNotice">
+    <img  class="container-background1" src="https://i.ibb.co/59rtbrp/acoso1.png" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Mobbing: protocolos para prevenir el acoso laboral</h5>
+      <p class="card-text">El 20 de diciembre se conocerá la sentencia del juicio por el caso más tristemente emblemático de hostigamiento laboral: el de los ejecutivos de la empresa de telecomunicaciones francesa, la actualmente privatizada Orange, por “acoso moral” a los trabajadores...</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"> 07/04/2019 - 14:06</small>
+    </div>
+  </div>
+  <div class="card borderNotice">
+    <img class="container-background1" src="https://i.ibb.co/GJZ6dCZ/acoso2.png"  alt="..."/>
+    <div class="card-body">
+      <h5 class="card-title">Mobbing: cuando el trabajo nos destruye</h5>
+      <p class="card-text">El “síndrome de hostigamiento psicológico” refiere a formas sutiles y directas de ejercer maltrato psicológico. Se trata de una violencia ilimitada que hace estragos en la salud mental y física de la víctima...</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"> 07/04/2014 - 14:06</small>
+    </div>
+  </div>
+  <div class="card borderNotice">
+    <img class="container-background1"  src="https://i.ibb.co/dLfXr5R/acoso3.png" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">“Recibí ofertas sexuales buscando un trabajo digno en la Argentina”</h5>
+      <p class="card-text">"Soy de Venezuela, y hace poco más de un mes que llegué a la Argentina, y me instalé en Buenos Aires, desesperada por la terrible situación que azota a mi país...</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted"> 09/06/2018 - 21:00</small>
+    </div>
+  </div>
+</div>
+</div>
 	</section>
 	<section class="posts">
 	<div id="post-list" class="post-list post-article border-box"></div>
@@ -124,7 +160,7 @@ export const postListTemplate = (postObject) => {
 				  <textarea id="post-edit-${postObject.id}" class="border-box post-article textarea border-none" readOnly=true>${postObject.content}</textarea>
 				  ${(postObject.image !== undefined && postObject.image !== null) ? `<img class="image-post" src="${postObject.image}" alt="post-image" title="post image" />` : ``}
 				  <div>
-				  <img  id="mini-encanta-${postObject.id}" class="me-encanta" src="../assets/heart-empty.png" alt="likes" title="likes" />
+				  <img  id="mini-encanta-${postObject.id}" class="me-encanta"  alt="likes" title="likes" />
 				  <span id="likes-count-${postObject.id}" class="like-1">${postObject.likes}</span>
 				  </div>
 				  </div>
@@ -144,7 +180,7 @@ export const postListTemplate = (postObject) => {
 				${(user) ? ` <img id="post-comments-${postObject.id}" class="border-box btn-icon-post bg-green btn-icon-center " src="../assets/comments.png" alt="list-comments" />` : '' }
 				</div>
 				</div>
-				<div id="comment-content-${postObject.id}" class="border-box post-article">
+				<div id="comment-content-${postObject.id}" class="border-box post-article myborder">
 				</div>`;
 	const article = document.createElement('article');
 	article.setAttribute('id', postObject.id);
@@ -173,7 +209,7 @@ export const postListTemplate = (postObject) => {
     	userLikes = likes.find((comment) => comment.userName === user.email);
 		(userLikes !== undefined) ? btnLike.src = '../assets/heart.png'  : btnLike.src = '../assets/heart-empty.png';
 		(userLikes !== undefined) ? miniEncanta.src = '../assets/heart.png'  : miniEncanta.src = '../assets/heart-empty.png';
-			likesSpan.innerHTML = (userLikes !== undefined) ?  (likesCounter===1) ?  `a ti te encanta` :  `a ti y a ${likesCounter -1} personas le encanta` : (likesCounter===0)? "":`a ${likesCounter} personas le encanta`;
+			likesSpan.innerHTML = (userLikes !== undefined) ?  (likesCounter===1) ?  `solo a ti` :  `a ti y a ${likesCounter -1} más...` : (likesCounter===0)? "":`a ${likesCounter} personas le encanta`;
 		(userLikes !== undefined) ? likesSpanEncanta.classList.add("letter-like-red") : likesSpanEncanta.classList.add("like-2") && likesSpanEncanta.classList.remove("letter-like-red");
 			
     });
@@ -189,7 +225,7 @@ export const postListTemplate = (postObject) => {
     	    const likesCounter = likes.length;
 			const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
 			userLikes = likes.find((comment) => comment.userName === user.email);
-			likesSpan.innerHTML = likesCounter===1 ?  `a ti te encanta` :  `a ti y a ${likesCounter -1} personas le encanta`;
+			likesSpan.innerHTML = likesCounter===1 ?  `solo a ti` :  `a ti y a ${likesCounter -1} más ...`;
 		})
     	  );	
     	}  else {
@@ -201,7 +237,9 @@ export const postListTemplate = (postObject) => {
 			  likesSpanEncanta.classList.remove("letter-like-red");
     	    const likesCounter = likes.length;
 			const likesSpan = article.querySelector(`#likes-count-${postObject.id}`);
-			likesSpan.innerHTML =likesCounter===0 ? "":`a ${likesCounter} personas le encanta`;
+			likesSpan.innerHTML =likesCounter===0 ? "":`a ${likesCounter} personas`;
+			likesCounter===0 ? miniEncanta.src = '../assets/image.png' :""
+			
     	    userLikes = undefined;
             })
     	  );
@@ -246,7 +284,7 @@ const commentListTemplate = (commentsObject) => {
 	${(user.uid === commentsObject.authorId) ? `<img id="btn-delete-${commentsObject.id}" class="border-box btn-icon-post " src="../assets/close.png" alt="eliminar-post" />`: ''}
 	</div>
 	<div class="post-article">
-	<textarea id="comment-${commentsObject.id}" class=" clear block auto border-box textarea-comment bg-white border" readOnly="true">${commentsObject.description}</textarea>
+	<textarea id="comment-${commentsObject.id}" class=" clear block auto border-box textarea-comment bg-white border1" readOnly="true">${commentsObject.description}</textarea>
 	</div>
 	`;
 	const article = document.createElement('article');
@@ -277,12 +315,14 @@ export const toggleDisableTextarea = (textArea, select, postObject, btn) => {
 		select.disabled = false;
 		document.getElementById(`edit-privacy-${postObject.id}`).classList.add("show");
 		document.getElementById(`edit-privacy-${postObject.id}`).classList.remove("hide");
+        textArea.classList.remove("border-none");
 	} else {
 		btn.src = "../assets/paper-plane.png";
 		textArea.readOnly = true;
 		select.disabled = true;
 		document.getElementById(`edit-privacy-${postObject.id}`).classList.add("hide");
 		document.getElementById(`edit-privacy-${postObject.id}`).classList.remove("show");
+		textArea.classList.add("border-none");
 
 		return updatePost(postObject.id, textArea.value, select.value)
 	}
@@ -292,9 +332,13 @@ export const toggleDisableTextareaComments = (textArea, commentsObject, btn) => 
 	if (textArea.readOnly) {
 		btn.src = "../assets/save.png";
 		textArea.readOnly = false;
+		textArea.classList.remove("border1");
+		textArea.classList.add("border");
 	} else {
 		btn.src = "../assets/paper-plane.png";
 		textArea.readOnly = true;
+		textArea.classList.add("border1");
+		textArea.classList.remove("border");
 		return updatePostComments(commentsObject.id, commentsObject.id, textArea.value)
 	}
 }
