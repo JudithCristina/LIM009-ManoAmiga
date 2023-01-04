@@ -26,7 +26,7 @@
     "eslint-plugin-jest": "^22.1.2",
     "firebase-mock": "^2.2.10",
     "htmlhint": "^0.10.1",
-    "jest": "^23.6.0",
+    "jest": "^29.3.1",
     "lite": "^4.0.5",
     "lite-server": "^2.4.0",
     "mock-cloud-firestore": "^0.9.3",
